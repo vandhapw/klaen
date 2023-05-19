@@ -30,21 +30,22 @@ export async function createUser(user_id, user_name, user_pwd,user_phone, user_e
 
 export async function AuthLogin(userId, userPw) {
     //  await axios.get(BASE_URL+'/account/login/api',
-    await axios.get('http://139.150.73.211:8000/account/login/api?username='+userId+'&password='+userPw)
-      .then(response => {
-        token = {
-          message: response.data,
-          username: userId,
-          authID: '1'
-        }
-        // token = response.data;
-        // console.log("token", token)
-        // console.log(response.status)
-      })
-      .catch(err => console.warn("error", err));
-      // console.log("token",token)
-      return token;
+    // await axios.get(`http://139.150.73.211:8000/account/logins/api?username=${userId}&password=${userPw}`)
+    try {
+      const response = await axios.get(`http://139.150.73.211:8000/account/login/api?username=${userId}&password=${userPw}`)
+      // const json = await response.json();
+      let token = {
+              message: response.data,
+              username: userId,
+              authID: '1'
+            }
+      // console.log(token)
+   
+    return token;
+    } catch (error) {
+      console.error(error);
     }
+ }
     
   
   

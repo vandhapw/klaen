@@ -26,7 +26,8 @@ import { NavigationContainer, useNavigation } from '@react-navigation/native';
 
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
-import AirQuality from './dashboard/AirQuality';
+
+import IndexAir from './dashboard/airquality/IndexAir';
 import Lighting from './dashboard/Lighting';
 
 const Tab = createMaterialTopTabNavigator();
@@ -36,9 +37,10 @@ function MainScreen(){
 
   return (
    <Tab.Navigator>
-      <Tab.Screen name='Air Quality' component={AirQuality} />
+      <Tab.Screen name='Air Quality' component={IndexAir} />
       <Tab.Screen name='Lighting' component={Lighting} />
    </Tab.Navigator>
+   
    
   )
 }

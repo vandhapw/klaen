@@ -30,6 +30,7 @@ import MainScreen from '../screens/MainScreen';
 import DetailNews from '../component/articles/DetailNews';
 import AllNews from '../component/articles/AllNews';
 import BackEndMenu from '../screens/backend-menu/BackEndMenu';
+import IndexAir from '../screens/dashboard/airquality/IndexAir';
 // import ContextState like session
 import AuthenticationProcess, {AuthProcess} from '../util/AuthenticationProcess';
 

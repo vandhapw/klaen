@@ -19,10 +19,11 @@ function Login (){
     const authCtx = useContext(AuthProcess);
 
     async function signInHandler({ userId, userPw}) {
-      // console.log(token, "token")
+      // console.log(userId, userPw, "token")
         setIsAuthenticating(true);
         try{
           const token = await AuthLogin(userId, userPw);
+          // console.log("tokens ", token)
           authCtx.authenticate(token)
           if(token !== null){
             if(token.message === 'success!'){

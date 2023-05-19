@@ -81,10 +81,10 @@ function Authentication({ isLogin, onAuthenticate }) {
         onSubmit={submitHandler}
         // credentialsInvalid={credentialsInvalid}
       /> 
+
+      
     </View>
     
-    
-     
     </ScrollView>
   );
 }

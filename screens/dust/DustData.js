@@ -24,7 +24,7 @@ import {
   Pressable,
   TouchableOpacity
 } from 'react-native';
-import { getSensorValue, readMainData, sendDataMobile } from '../../util/getPost';
+import { getSensorValue, getSwitchValue, sendDataMobile } from '../../util/getPost';
 import { Card } from 'react-native-paper';
 
 import { COLORS, FONTS, icons, SIZES } from '../../constants';
@@ -141,7 +141,7 @@ function DustData(){
   }
 
   const currentData = async() =>{
-      await readMainData()
+      await getSwitchValue()
       .then((data) => {
         // console.log("data ",data)
         setCurrentTemperature(data[0].temperature)
@@ -190,8 +190,6 @@ function DustData(){
           // let contents = "Dear Customer, \n I would like to inform to you that, based on dust sensor value of our device, the dust sensor value is Bad, please check your room regularly \n turn on your humidifier. \n Thank you very much for your attention. \n Regards, \n Klaen team."
           sendingEmail(to, subject, contents)
           .then((res) => {
-            // bottomSheet.current.show(subject)
-            // console.log('Message send successfully');
           })
           .catch((err) => {console.log(err)})
         }
@@ -221,11 +219,11 @@ function DustData(){
       <IconLabel icon={icons.dust_icon} label={""} />
       </View>
       <View>
-      <Text style={styles.title}>Dust Value : </Text>
+      <Text style={[styles.title,{color:'#060047'}]}>Dust Value : </Text>
       <Text style={styles.smallText}>On : {item.datetime}</Text>
       </View>
       <View>
-      <Text style={styles.score}>{item.dustDensity}</Text>
+      <Text style={[styles.score,{color:'#060047'}]}>{item.dustDensity}</Text>
     </View>
     <View style={{paddingStart: 20, width: '30%'}}>
       <Text style={[styles.index, {backgroundColor: item.color}]}>{item.index}</Text>
@@ -299,17 +297,17 @@ function DustData(){
         <View style={{flexDirection:'row', justifyContent:'center', alignContent:'center', alignItems:'center'}}>
         {isPage != 1 ? 
           <TouchableOpacity style={{marginEnd:'10%'}} onPress={() => previousPage()}>
-          <Text> Previous</Text>
+          <Text style={{color:'#060047'}}> Previous</Text>
         </TouchableOpacity>
         :
         <TouchableOpacity style={{marginEnd:'10%'}} disabled={true}>
           <Text style={{color: '#DDDDDD'}}> Previous</Text>
         </TouchableOpacity>
         }        
-        <Text>Page {isPage}</Text>
+        <Text style={{color:'#060047'}}>Page {isPage}</Text>
         {(lastData - isPage) >= 10 ? 
         <TouchableOpacity  style={{marginStart:'10%'}} onPress={() => nextPage()}>
-          <Text>Next</Text>
+          <Text style={{color:'#060047'}}>Next</Text>
         </TouchableOpacity>
         :
         <TouchableOpacity  style={{marginStart:'10%'}} disabled={true}>

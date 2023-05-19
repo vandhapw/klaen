@@ -20,7 +20,7 @@ import {
   Image,
 } from 'react-native';
 import {LineChart} from 'react-native-chart-kit';
-import {getSensorValue} from '../../util/getPost';
+import {getSensorValue, getSwitchValue} from '../../util/getPost';
 import {COLORS, icons, SIZES, FONTS} from '../../constants';
 
 function TemperatureChart() {

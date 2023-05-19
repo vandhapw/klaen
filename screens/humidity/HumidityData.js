@@ -24,7 +24,7 @@ import {
   Pressable,
   TouchableOpacity
 } from 'react-native';
-import { getSensorValue, readMainData, sendDataMobile } from '../../util/getPost';
+import { getSensorValue, getSwitchValue, sendDataMobile } from '../../util/getPost';
 import { Card } from 'react-native-paper';
 
 import { COLORS, FONTS, icons, SIZES } from '../../constants';
@@ -137,7 +137,7 @@ function HumidityData(){
   }
 
   const currentData = async() =>{
-      await readMainData()
+      await getSwitchValue()
       .then((data) => {
         // console.log("data ",data)
         setCurrentTemperature(data[0].temperature)
@@ -228,11 +228,11 @@ function HumidityData(){
       <IconLabel icon={icons.humidityIcon} label={""} />
       </View>
       <View>
-      <Text style={styles.title}>Humidity Value : </Text>
+      <Text style={[styles.title,{color:'#060047'}]}>Humidity Value : </Text>
       <Text style={styles.smallText}>On : {item.datetime}</Text>
       </View>
       <View>
-      <Text style={styles.score}>{item.humidity}</Text>
+      <Text style={[styles.score,{color:'#060047'}]}>{item.humidity}</Text>
     </View>
     <View style={{ width: '25%'}}>
       <Text style={[styles.index, {backgroundColor:item.color}]}>{item.index}</Text>
@@ -305,17 +305,17 @@ function HumidityData(){
         <View style={{flexDirection:'row', justifyContent:'center', alignContent:'center', alignItems:'center'}}>
         {isPage != 1 ? 
           <TouchableOpacity style={{marginEnd:'10%'}} onPress={() => previousPage()}>
-          <Text> Previous</Text>
+          <Text style={{color:'#060047'}}> Previous</Text>
         </TouchableOpacity>
         :
         <TouchableOpacity style={{marginEnd:'10%'}} disabled={true}>
           <Text style={{color: '#DDDDDD'}}> Previous</Text>
         </TouchableOpacity>
         }        
-        <Text>Page {isPage}</Text>
+        <Text style={{color:'#060047'}}>Page {isPage}</Text>
         {(lastData - isPage) >= 10 ? 
         <TouchableOpacity  style={{marginStart:'10%'}} onPress={() => nextPage()}>
-          <Text>Next</Text>
+          <Text style={{color:'#060047'}}>Next</Text>
         </TouchableOpacity>
         :
         <TouchableOpacity  style={{marginStart:'10%'}} disabled={true}>

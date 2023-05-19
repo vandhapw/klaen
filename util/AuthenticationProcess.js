@@ -11,7 +11,7 @@ export const AuthProcess = createContext({
   token: '',
   tempData: '',
   isAuthenticated: false,
-  authenticate: (token) => {},
+  authenticate: (isStatus) => {},
   register: (tempData) => {},
   logout: () => {},
   
@@ -20,23 +20,23 @@ export const AuthProcess = createContext({
 
 function AuthenticationProcess({ children }) {
   const [authToken, setAuthToken] = useState({});
-  const [isStatus, setStatus] = useState(false);
+  const [isStatus, setStatus] = useState();
   const [listMenu, setMenu] = useState();
    // const [authTempData, setAuthTempData] = useState();
 
   // const [status, setStatus] = useState();
 
   useEffect(() => {
-    async function fetchToken(){
-    const storedToken = await AsyncStorage.getItem('token');  
-    if(storedToken){
-      setAuthToken(storedToken); // auto login
-      // console.log('tokennya ',storedToken)
-    }
-    getMenuBackend()
-    }
+    // async function fetchToken(){
+    // const storedToken = await AsyncStorage.getItem('token');  
+    // if(storedToken){
+    //   setAuthToken(storedToken); // auto login
+    //   // console.log('tokennya ',storedToken)
+    // }
+    // getMenuBackend()
+    // }
 
-    fetchToken();
+    // fetchToken();
   }, [])
 
   const getMenuBackend = async () => {
@@ -51,7 +51,7 @@ function AuthenticationProcess({ children }) {
     
 
   function authenticate(token) {
-    // console.log('authenticated ', token)
+    // console.log('auth ', token)
     if(token.authID == '1'){// 1 for Login - 2 fro Register 
         if(token.message === 'success!'){
             setAuthToken(token);
@@ -104,7 +104,7 @@ function AuthenticationProcess({ children }) {
   };
 
   
-  console.log('value ', value)
+  // console.log('value ', value)
 
   return <AuthProcess.Provider value={value}>{children}</AuthProcess.Provider>;
 }

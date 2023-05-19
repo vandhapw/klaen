@@ -97,10 +97,10 @@ const Lighting = ({ navigation }) => {
       .then((res) => {    
         // console.log(res)    
         setInputLevel(res[0].lighting)
-        setHumidity(res[0].humidity);
-        setTemperature(res[0].temperature);
+        setHumidity(res[0].hum);
+        setTemperature(res[0].temp);
         setDust(res[0].dust);
-        // console.log("current ", res[0].lighting)
+        console.log("hum ", res[0].hum, res[0].temp)
         currentState(res[0].lighting);
         switch (res[0].lighting){
           case 1:
@@ -145,14 +145,14 @@ const Lighting = ({ navigation }) => {
   async function sendLightingData(level){
     // console.log("level ", humidity)
     // let csrfToken = authCtx.token.username
-    await postSwitchDevice(humidity, temperature,dust)
+    await postSwitchDevice(humidity, temperature,dust, level)
     .then((res) => {
-      // if(res.message == 'Success'){
-      //    ToastAndroid.show("Changing Lighting Level Successfully", ToastAndroid.SHORT)
-      //    setLoading(true)
-      //   //  fetchCurrentData()
-      // }
-      ToastAndroid.show("Changing Lighting Level Successfully", ToastAndroid.SHORT)
+      if(res.message == 'success'){
+         ToastAndroid.show("Changing Lighting Level Successfully", ToastAndroid.SHORT)
+        //  setLoading(true)
+        //  fetchCurrentData()
+      }
+      // ToastAndroid.show("Changing Lighting Level Successfully", ToastAndroid.SHORT)
       // console.log(res);
     })
     .catch((err) => console.log("Error ", err))
@@ -213,15 +213,18 @@ const Lighting = ({ navigation }) => {
     //     // fetchCurrentData();
     // }
   }
+ 
   useEffect(() => {
     currentState()
+    // fetchCurrentData()
   },[inputLevel])
 
   useEffect(() => {
     if(!isPushed){
       fetchCurrentData()
     }else {
-      console.log("load", inputLevel)
+      // console.log("load", inputLevel)
+      console.log("load", temperature)
       // fetchCurrentData();
       switch (inputLevel){
         case 1:
