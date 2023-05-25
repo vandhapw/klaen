@@ -32,6 +32,30 @@ export const lamp40 = require("../assets/icons/40-lamp.png");
 export const lamp10 = require("../assets/icons/10-lamp.png");
 export const lampOff = require("../assets/icons/off-lamp.png");
 
+// icons from Nike template
+export const menu_nike = require("../assets/nike/icons/menu.png")
+export const search_nike = require("../assets/nike/icons/search.png")
+
+// icons from PlantApp
+export const camera = require("../assets/plant/icons/camera.png");
+export const cube = require("../assets/plant/icons/cube_icon.png");
+export const flash = require("../assets/plant/icons/flash_icon.png");
+export const heart = require("../assets/plant/icons/heart_icon.png");
+export const heartGreenOutline = require("../assets/plant/icons/heart_green_outline.png");
+export const heartRed = require("../assets/plant/icons/heart_red.png");
+export const search_plant = require("../assets/plant/icons/search_icon.png");
+export const focus = require("../assets/plant/icons/focus.png");
+export const plus = require("../assets/plant/icons/plus.png");
+export const sun = require("../assets/plant/icons/sun.png");
+export const drop = require("../assets/plant/icons/drop.png");
+export const temperature = require("../assets/plant/icons/temperature.png");
+export const garden = require("../assets/plant/icons/garden.png");
+export const seed = require("../assets/plant/icons/seed.png");
+export const chevron = require("../assets/plant/icons/chevron.png");
+export const downArrow = require("../assets/plant/icons/down-arrow.png");
+export const back_plant = require("../assets/plant/icons/back.png");
+
+
 
 export default {
     airplane,
@@ -66,5 +90,24 @@ export default {
     lamp100,
     lamp40,
     lamp75,
-    lampOff
+    lampOff,
+
+    // from plant app
+    camera,
+    cube,
+    flash,
+    heart,
+    heartGreenOutline,
+    heartRed,
+    search,
+    focus,
+    plus,
+    sun,
+    drop,
+    temperature,
+    garden,
+    seed,
+    chevron,
+    downArrow,
+    back
 }

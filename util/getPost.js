@@ -164,7 +164,7 @@ export const getSensorValue = async () => {
   // }
 
   export const postSwitchDevice = async (humidity, temperature,dust,lighting) => {
-    console.log(humidity, temperature, dust, lighting)
+    // console.log(humidity, temperature, dust, lighting)
     const options = {
       method: "POST",
       headers: {'Content-Type': 'application/json','Accept' : 'application/json, text/plain, */*',},
@@ -201,6 +201,38 @@ export const getSensorValue = async () => {
     //   console.error(error);
     // }
   };
+
+  export const OutdoorAqi_All = async () => {
+    // console.log('a')
+    try {
+      const response = await fetch(
+        // 'https://vpw.my.id/microcontroller/sendDataMobile.json',
+        'http://203.247.166.29:8000/scheduler/busan/data/'
+      );
+      const json = await response.json();
+      // console.log("tes",json)
+        return json;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  export const IndoorAqi_All = async () => {
+    // console.log('a')
+    try {
+      const response = await fetch(
+        // 'https://vpw.my.id/microcontroller/sendDataMobile.json',
+        'http://lightbusanko.com/sensor/api/iaq/list/?dateFrom=20230401&dateTo=20230524'
+      );
+      const json = await response.json();
+      // console.log("tes",json)
+        return json;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+
 
   // article
   
